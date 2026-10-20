@@ -1,0 +1,1743 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jazib Jawed — Operations, Performance Marketing & E-Commerce Portfolio</title>
+    <meta name="description" content="Portfolio of Jazib Jawed: IoBM BBA Merit Scholar, Ex-IBEX Walmart U.S. Client Operations Specialist, and E-Commerce Founder." />
+    <meta property="og:title" content="Jazib Jawed — Portfolio" />
+    <meta property="og:description" content="IoBM BBA Merit Scholar, Walmart U.S. Operations Specialist, and Performance Marketer." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+              mono: ['"JetBrains Mono"', 'monospace'],
+            },
+            colors: {
+              brand: {
+                dark: '#080c14',
+                surface: '#0e1526',
+                surfaceHover: '#151f38',
+                border: '#1e293b',
+                accent: '#6366f1',
+                cyan: '#06b6d4',
+              }
+            }
+          }
+        }
+      }
+    </script>
+
+    <!-- Three.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <style>
+      /* Custom fine-tuned styling */
+      body {
+        font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+        background-color: #080c14;
+        color: #f1f5f9;
+        overflow-x: hidden;
+      }
+
+      /* Noise overlay for subtle texture */
+      .bg-grid-pattern {
+        background-image: radial-gradient(rgba(99, 102, 241, 0.12) 1px, transparent 1px);
+        background-size: 28px 28px;
+      }
+
+      /* Tilt card 3D container */
+      .tilt-card {
+        transform-style: preserve-3d;
+        perspective: 1000px;
+        transition: transform 0.18s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+        will-change: transform;
+        position: relative;
+      }
+      .tilt-card-glare {
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        pointer-events: none;
+        background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.08), transparent 65%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #080c14;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #1e293b;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #334155;
+      }
+
+      /* Keyframes for subtle ambient glow */
+      @keyframes floatSlow {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-8px); }
+      }
+      .animate-float {
+        animation: floatSlow 6s ease-in-out infinite;
+      }
+    </style>
+  </head>
+  <body class="bg-[#080c14] text-slate-100 antialiased selection:bg-indigo-500/30 selection:text-indigo-200">
+
+    <!-- Toast Notification Container -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-16 opacity-0 transition-all duration-300 pointer-events-none flex items-center gap-3 bg-slate-900/95 text-slate-100 border border-slate-700/80 px-4 py-3 rounded-xl shadow-2xl backdrop-blur-md text-sm font-medium">
+      <svg class="w-5 h-5 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+      </svg>
+      <span id="toast-message">Copied to clipboard!</span>
+    </div>
+
+    <!-- Top Navigation Bar (Strict 3-Zone Contract) -->
+    <header class="fixed top-0 left-0 right-0 z-40 bg-[#080c14]/85 backdrop-blur-md border-b border-slate-800/80">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-8">
+        
+        <!-- Zone 1: Wordmark / Brand -->
+        <a href="#hero" class="text-base font-bold tracking-tight text-white flex items-center gap-2.5 whitespace-nowrap shrink-0 group">
+          <span class="w-8 h-8 rounded-lg bg-gradient-to-tr from-indigo-600 via-indigo-500 to-cyan-400 flex items-center justify-center text-white font-mono text-sm font-bold shadow-lg shadow-indigo-500/20 group-hover:scale-105 transition-transform">
+            JJ
+          </span>
+          <span class="tracking-tight text-slate-100 font-semibold">Jazib Jawed</span>
+          <span class="text-xs text-indigo-400/90 font-mono hidden sm:inline-block">/ Operations &amp; Growth</span>
+        </a>
+
+        <!-- Zone 2: Navigation Links -->
+        <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-400">
+          <a href="#about" class="hover:text-white transition-colors whitespace-nowrap">About</a>
+          <a href="#experience" class="hover:text-white transition-colors whitespace-nowrap">Experience</a>
+          <a href="#projects" class="hover:text-white transition-colors whitespace-nowrap">Projects</a>
+          <a href="#skills" class="hover:text-white transition-colors whitespace-nowrap">Skills</a>
+          <a href="#contact" class="hover:text-white transition-colors whitespace-nowrap">Contact</a>
+        </nav>
+
+        <!-- Zone 3: Primary CTA & Action Buttons -->
+        <div class="hidden sm:flex items-center gap-3 shrink-0">
+          <a href="/public/assets/aistudio/Jazib_Merit_Scholar_2026_2e4d1c13.pdf" target="_blank" download="Jazib_Jawed_Resume.pdf" class="px-3.5 py-1.5 text-xs font-semibold text-slate-300 hover:text-white bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700/80 rounded-lg transition-all flex items-center gap-1.5 whitespace-nowrap">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+            </svg>
+            Resume
+          </a>
+          <a href="#contact" class="px-4 py-1.5 text-xs font-semibold text-white bg-gradient-to-r from-indigo-600 to-indigo-500 hover:from-indigo-500 hover:to-indigo-400 rounded-lg shadow-sm shadow-indigo-600/30 transition-all whitespace-nowrap">
+            Get in Touch
+          </a>
+        </div>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button id="mobile-menu-btn" aria-label="Toggle menu" class="md:hidden p-2 text-slate-400 hover:text-white focus:outline-none">
+          <svg id="menu-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+          <svg id="menu-icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+
+      </div>
+
+      <!-- Mobile Dropdown Menu -->
+      <div id="mobile-menu" class="hidden md:hidden border-b border-slate-800 bg-[#080c14]/98 px-6 py-4 space-y-3">
+        <a href="#about" class="block text-sm font-medium text-slate-300 hover:text-indigo-400 py-1 mobile-link">About</a>
+        <a href="#experience" class="block text-sm font-medium text-slate-300 hover:text-indigo-400 py-1 mobile-link">Experience</a>
+        <a href="#projects" class="block text-sm font-medium text-slate-300 hover:text-indigo-400 py-1 mobile-link">Projects</a>
+        <a href="#skills" class="block text-sm font-medium text-slate-300 hover:text-indigo-400 py-1 mobile-link">Skills</a>
+        <a href="#contact" class="block text-sm font-medium text-slate-300 hover:text-indigo-400 py-1 mobile-link">Contact</a>
+        <div class="pt-3 border-t border-slate-800 flex gap-3">
+          <a href="/public/assets/aistudio/Jazib_Merit_Scholar_2026_2e4d1c13.pdf" target="_blank" download="Jazib_Jawed_Resume.pdf" class="flex-1 text-center py-2 text-xs font-semibold text-slate-300 bg-slate-800 rounded-lg">
+            Download Resume
+          </a>
+          <a href="#contact" class="flex-1 text-center py-2 text-xs font-semibold text-white bg-indigo-600 rounded-lg mobile-link">
+            Get in Touch
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="relative">
+
+      <!-- Hero Section with Three.js 3D Interactive Canvas Background -->
+      <section id="hero" class="relative min-h-[92vh] flex items-center justify-center pt-20 pb-16 overflow-hidden">
+        
+        <!-- Three.js Canvas Container -->
+        <div id="three-hero-container" class="absolute inset-0 z-0 pointer-events-auto"></div>
+
+        <!-- Ambient Gradient Background Overlays -->
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[#080c14]/50 to-[#080c14] z-10 pointer-events-none"></div>
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-600/10 blur-[130px] rounded-full pointer-events-none z-10"></div>
+        <div class="absolute bottom-10 right-1/4 w-[400px] h-[400px] bg-cyan-500/10 blur-[120px] rounded-full pointer-events-none z-10"></div>
+
+        <!-- Hero Content (Pointer events transparent on wrapper, auto on interactive items) -->
+        <div class="relative z-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-8">
+          
+          <!-- Editorial Kicker (Zero-Pill discipline: unboxed clean text) -->
+          <div class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-slate-400 mb-6 bg-slate-900/60 border border-slate-800 px-3.5 py-1.5 rounded-full backdrop-blur-sm">
+            <span class="text-indigo-400 font-semibold">Merit Scholar @ IoBM</span>
+            <span class="text-slate-600" aria-hidden="true">·</span>
+            <span>Ex-IBEX Walmart U.S.</span>
+            <span class="text-slate-600" aria-hidden="true">·</span>
+            <span class="text-cyan-400 font-medium">Karachi, PK</span>
+          </div>
+
+          <!-- Main Hero Headline with balanced wrapping -->
+          <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-6 leading-[1.12]" style="text-wrap: balance;">
+            Scaling Client Operations &amp; <br class="hidden sm:inline" />
+            <span class="bg-gradient-to-r from-indigo-400 via-indigo-200 to-cyan-300 bg-clip-text text-transparent">
+              Performance Growth
+            </span>
+          </h1>
+
+          <!-- Punchy Subheadline based on resume -->
+          <p class="max-w-2xl mx-auto text-base sm:text-lg text-slate-300 mb-10 leading-relaxed font-normal">
+            Merit-Scholar BBA candidate combining frontline U.S. client operations leadership for Walmart with performance marketing and direct-to-consumer e-commerce strategy.
+          </p>
+
+          <!-- Call to Action Buttons -->
+          <div class="flex flex-wrap items-center justify-center gap-4 mb-16">
+            <a href="#projects" class="px-6 py-3 text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-500 rounded-xl shadow-lg shadow-indigo-600/30 transition-all flex items-center gap-2 group">
+              <span>Explore Projects</span>
+              <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+              </svg>
+            </a>
+            <a href="#contact" class="px-6 py-3 text-sm font-semibold text-slate-200 hover:text-white bg-slate-900/80 hover:bg-slate-800/90 border border-slate-700/80 rounded-xl transition-all">
+              Contact Me
+            </a>
+            <button onclick="openModal('resume-modal')" class="px-5 py-3 text-sm font-semibold text-slate-300 hover:text-white bg-slate-900/60 hover:bg-slate-800/80 border border-slate-800 rounded-xl transition-all flex items-center gap-2">
+              <svg class="w-4 h-4 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+              </svg>
+              Quick Resume View
+            </button>
+          </div>
+
+          <!-- 3D Interactive Helper Tag -->
+          <div class="inline-flex items-center gap-2 text-xs text-slate-500 font-mono">
+            <svg class="w-3.5 h-3.5 text-cyan-400 animate-spin" style="animation-duration: 8s;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+            </svg>
+            <span>Interactive 3D geometry responds to mouse movement</span>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Key Quantitative Metrics Strip (Claim-to-Proof Adjacency) -->
+      <section class="border-y border-slate-800/80 bg-[#0b101c]/80 relative z-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-8 divide-y md:divide-y-0 md:divide-x divide-slate-800/80">
+            
+            <div class="text-center pt-4 md:pt-0">
+              <div class="text-3xl sm:text-4xl font-extrabold text-white font-mono tracking-tight tabular-nums">
+                87%+
+              </div>
+              <p class="text-xs sm:text-sm text-slate-400 mt-1 font-medium">Customer Satisfaction (CSAT)</p>
+              <span class="text-[11px] text-slate-500">Walmart U.S. Campaign</span>
+            </div>
+
+            <div class="text-center pt-4 md:pt-0 md:pl-8">
+              <div class="text-3xl sm:text-4xl font-extrabold text-indigo-400 font-mono tracking-tight tabular-nums">
+                3.6 GPA
+              </div>
+              <p class="text-xs sm:text-sm text-slate-400 mt-1 font-medium">Merit Scholarship Honor</p>
+              <span class="text-[11px] text-slate-500">IoBM BBA Program (Year 1)</span>
+            </div>
+
+            <div class="text-center pt-4 md:pt-0 md:pl-8">
+              <div class="text-3xl sm:text-4xl font-extrabold text-white font-mono tracking-tight tabular-nums">
+                40–50
+              </div>
+              <p class="text-xs sm:text-sm text-slate-400 mt-1 font-medium">Daily Live Touchpoints</p>
+              <span class="text-[11px] text-slate-500">High-Volume Problem Resolution</span>
+            </div>
+
+            <div class="text-center pt-4 md:pt-0 md:pl-8">
+              <div class="text-3xl sm:text-4xl font-extrabold text-cyan-400 font-mono tracking-tight tabular-nums">
+                100%
+              </div>
+              <p class="text-xs sm:text-sm text-slate-400 mt-1 font-medium">E-Commerce Platform Launch</p>
+              <span class="text-[11px] text-slate-500">Founder @ GamesBond</span>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- About & Strategic Strengths Section -->
+      <section id="about" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          
+          <!-- Left Column: Narrative Prose -->
+          <div class="lg:col-span-7 space-y-6">
+            <div class="text-xs font-mono uppercase tracking-wider text-indigo-400 font-semibold">
+              Executive Profile &amp; Core Strengths
+            </div>
+            
+            <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-white leading-tight">
+              Frontline Operational Rigor Meets Commercial Strategy
+            </h2>
+
+            <p class="text-slate-300 leading-relaxed text-base sm:text-lg">
+              I am a Merit-Scholar BBA student at the Institute of Business Management (IoBM) with a 3.6 Year-1 GPA. My background unites high-stakes enterprise operations at IBEX Global for Walmart U.S. with real-world entrepreneurial execution through GamesBond.
+            </p>
+
+            <p class="text-slate-400 leading-relaxed text-sm sm:text-base">
+              At Walmart U.S., I managed 40–50 high-pressure customer touchpoints each day, resolving complicated fulfillment, payment, and account disputes under strict First Contact Resolution (FCR) and Average Handling Time (AHT) parameters. I paired structured de-escalation with meticulous CRM records, protecting brand reputation while minimizing customer churn.
+            </p>
+
+            <p class="text-slate-400 leading-relaxed text-sm sm:text-base">
+              As the founder of GamesBond, I directed consumer research, supplier coordination, and Meta Ads campaigns to bring targeted gaming hardware to the local market. I operate comfortably across digital growth engines, CRM architectures, business analytics, and modern AI-assisted workflows.
+            </p>
+
+            <!-- Quick Info Bar -->
+            <div class="pt-4 grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-mono text-slate-400 border-t border-slate-800">
+              <div class="flex items-center gap-2">
+                <span class="text-indigo-400 font-semibold">Location:</span>
+                <span>Karachi, Pakistan</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-indigo-400 font-semibold">Open To:</span>
+                <span>Associate / Intern Roles</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-indigo-400 font-semibold">Education:</span>
+                <span>BBA Candidate (2025–2029)</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-indigo-400 font-semibold">Focus:</span>
+                <span>Marketing, Ops, Client Success</span>
+              </div>
+            </div>
+
+            <!-- Copy Code Helper Button (Allows user to inspect or copy full source code right from UI) -->
+            <div class="pt-2">
+              <button onclick="openModal('source-modal')" class="inline-flex items-center gap-2 text-xs text-slate-400 hover:text-white bg-slate-900 border border-slate-800 px-3 py-1.5 rounded-lg transition-colors">
+                <svg class="w-3.5 h-3.5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                </svg>
+                <span>View / Copy Single-File Source Code</span>
+              </button>
+            </div>
+
+          </div>
+
+          <!-- Right Column: 3 Strategic Pillars with 3D Tilt -->
+          <div class="lg:col-span-5 space-y-4">
+            
+            <div class="tilt-card p-6 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-slate-700 transition-all">
+              <div class="tilt-card-glare"></div>
+              <div class="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 mb-4">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                </svg>
+              </div>
+              <h3 class="text-base font-semibold text-white mb-2">High-Stakes Client Operations</h3>
+              <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                Experienced with Fortune 1 retail protocols at Walmart U.S. Expert in de-escalating customer friction, optimizing First Contact Resolution (FCR), and enforcing meticulous CRM documentation.
+              </p>
+            </div>
+
+            <div class="tilt-card p-6 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-slate-700 transition-all">
+              <div class="tilt-card-glare"></div>
+              <div class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 mb-4">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                </svg>
+              </div>
+              <h3 class="text-base font-semibold text-white mb-2">Performance Marketing &amp; D2C</h3>
+              <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                Hands-on execution in Meta Ads Manager, full-funnel acquisition, audience segmentation, conversion rate optimization, and consumer behavioral research.
+              </p>
+            </div>
+
+            <div class="tilt-card p-6 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-slate-700 transition-all">
+              <div class="tilt-card-glare"></div>
+              <div class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 mb-4">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                </svg>
+              </div>
+              <h3 class="text-base font-semibold text-white mb-2">AI-Augmented Analytical Workflow</h3>
+              <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                Leveraging generative AI for market intelligence, prompt engineering, and automated reporting alongside Microsoft Excel and GoHighLevel CRM architectures.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Experience & Education Timeline -->
+      <section id="experience" class="py-24 bg-[#090d18] border-t border-slate-800/80 relative z-20">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div class="text-center max-w-2xl mx-auto mb-16">
+            <span class="text-xs font-mono uppercase tracking-wider text-indigo-400 font-semibold">Chronological Track Record</span>
+            <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-white mt-2">
+              Experience &amp; Education
+            </h2>
+            <p class="text-slate-400 text-sm mt-3">
+              A timeline of professional client operations, commercial ventures, and academic distinctions.
+            </p>
+          </div>
+
+          <!-- Vertical Timeline Layout -->
+          <div class="relative pl-6 sm:pl-8 border-l border-slate-800 space-y-12 max-w-3xl mx-auto">
+
+            <!-- Item 1: IBEX Global (Walmart U.S.) -->
+            <div class="relative group">
+              <!-- Timeline Marker Node -->
+              <div class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-indigo-500 border-4 border-[#080c14] shadow-md group-hover:scale-125 transition-transform"></div>
+
+              <div class="tilt-card p-6 sm:p-8 rounded-2xl bg-slate-900/70 border border-slate-800 hover:border-slate-700 transition-all">
+                <div class="tilt-card-glare"></div>
+
+                <div class="flex flex-wrap items-baseline justify-between gap-2 mb-2">
+                  <h3 class="text-lg sm:text-xl font-bold text-white">
+                    Customer Service Specialist – Walmart (U.S. Campaign)
+                  </h3>
+                  <span class="text-xs font-mono text-indigo-400 bg-indigo-500/10 px-2.5 py-1 rounded-md border border-indigo-500/20">
+                    Jan 2025 – Jan 2026 (1 year)
+                  </span>
+                </div>
+
+                <div class="text-xs sm:text-sm text-slate-400 font-medium mb-4 flex items-center gap-2">
+                  <span class="text-slate-200">IBEX Global</span>
+                  <span aria-hidden="true">·</span>
+                  <span>Karachi, Pakistan</span>
+                  <span aria-hidden="true">·</span>
+                  <span class="text-cyan-400">Enterprise U.S. Retail</span>
+                </div>
+
+                <ul class="space-y-2.5 text-xs sm:text-sm text-slate-300">
+                  <li class="flex items-start gap-2.5">
+                    <span class="text-indigo-400 mt-1">▸</span>
+                    <span><strong class="text-white font-medium">High-Volume Operations:</strong> Executed 40–50 live daily touchpoints for Walmart U.S., sustaining an 87%+ CSAT score while consistently surpassing productivity and quality standards.</span>
+                  </li>
+                  <li class="flex items-start gap-2.5">
+                    <span class="text-indigo-400 mt-1">▸</span>
+                    <span><strong class="text-white font-medium">De-escalation &amp; Retention:</strong> Resolved high-friction payment, logistics, carrier fulfillment, and customer account disputes with structured objection handling to minimize customer churn.</span>
+                  </li>
+                  <li class="flex items-start gap-2.5">
+                    <span class="text-indigo-400 mt-1">▸</span>
+                    <span><strong class="text-white font-medium">CRM &amp; Data Integrity:</strong> Logged end-to-end case histories and issue root causes across enterprise CRM platforms with zero compromise on data precision.</span>
+                  </li>
+                  <li class="flex items-start gap-2.5">
+                    <span class="text-indigo-400 mt-1">▸</span>
+                    <span><strong class="text-white font-medium">Performance Metrics:</strong> Consistently exceeded stringent operational service-level benchmarks, including Average Handling Time (AHT) and First Contact Resolution (FCR).</span>
+                  </li>
+                </ul>
+
+                <div class="mt-5 pt-4 border-t border-slate-800/80 flex flex-wrap gap-2 text-xs font-mono text-slate-400">
+                  <span class="bg-slate-800 px-2 py-0.5 rounded">Walmart Campaign</span>
+                  <span class="bg-slate-800 px-2 py-0.5 rounded">Enterprise CRM</span>
+                  <span class="bg-slate-800 px-2 py-0.5 rounded">Dispute Resolution</span>
+                  <span class="bg-slate-800 px-2 py-0.5 rounded">87%+ CSAT</span>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Item 2: GamesBond Venture -->
+            <div class="relative group">
+              <!-- Timeline Marker Node -->
+              <div class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-cyan-400 border-4 border-[#080c14] shadow-md group-hover:scale-125 transition-transform"></div>
+
+              <div class="tilt-card p-6 sm:p-8 rounded-2xl bg-slate-900/70 border border-slate-800 hover:border-slate-700 transition-all">
+                <div class="tilt-card-glare"></div>
+
+                <div class="flex flex-wrap items-baseline justify-between gap-2 mb-2">
+                  <h3 class="text-lg sm:text-xl font-bold text-white">
+                    Founder &amp; Digital Growth Lead
+                  </h3>
+                  <span class="text-xs font-mono text-cyan-400 bg-cyan-500/10 px-2.5 py-1 rounded-md border border-cyan-500/20">
+                    2025
+                  </span>
+                </div>
+
+                <div class="text-xs sm:text-sm text-slate-400 font-medium mb-4 flex items-center gap-2">
+                  <span class="text-slate-200">GamesBond (E-Commerce Platform)</span>
+                  <span aria-hidden="true">·</span>
+                  <a href="https://games-bond.vercel.app/" target="_blank" rel="noopener noreferrer" class="text-indigo-400 hover:underline inline-flex items-center gap-1">
+                    games-bond.vercel.app
+                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                    </svg>
+                  </a>
+                </div>
+
+                <ul class="space-y-2.5 text-xs sm:text-sm text-slate-300">
+                  <li class="flex items-start gap-2.5">
+                    <span class="text-cyan-400 mt-1">▸</span>
+                    <span>Designed, built, and launched an end-to-end direct-to-consumer e-commerce storefront tailored specifically for the gaming gear community in Pakistan.</span>
+                  </li>
+                  <li class="flex items-start gap-2.5">
+                    <span class="text-cyan-400 mt-1">▸</span>
+                    <span>Conducted in-depth market research on competitor pricing models, consumer purchase triggers, and digital retail positioning.</span>
+                  </li>
+                  <li class="flex items-start gap-2.5">
+                    <span class="text-cyan-400 mt-1">▸</span>
+                    <span>Architected conversion-oriented product catalogs and deployed Meta advertising campaigns to drive qualified inbound traffic and customer acquisition.</span>
+                  </li>
+                </ul>
+
+                <div class="mt-5 pt-4 border-t border-slate-800/80 flex flex-wrap gap-2 text-xs font-mono text-slate-400">
+                  <span class="bg-slate-800 px-2 py-0.5 rounded">D2C E-Commerce</span>
+                  <span class="bg-slate-800 px-2 py-0.5 rounded">Meta Ads</span>
+                  <span class="bg-slate-800 px-2 py-0.5 rounded">Pricing Strategy</span>
+                  <span class="bg-slate-800 px-2 py-0.5 rounded">Vercel Deployment</span>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Item 3: Education - IoBM BBA -->
+            <div class="relative group">
+              <!-- Timeline Marker Node -->
+              <div class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-emerald-400 border-4 border-[#080c14] shadow-md group-hover:scale-125 transition-transform"></div>
+
+              <div class="tilt-card p-6 sm:p-8 rounded-2xl bg-slate-900/70 border border-slate-800 hover:border-slate-700 transition-all">
+                <div class="tilt-card-glare"></div>
+
+                <div class="flex flex-wrap items-baseline justify-between gap-2 mb-2">
+                  <h3 class="text-lg sm:text-xl font-bold text-white">
+                    Bachelor of Business Administration (BBA)
+                  </h3>
+                  <span class="text-xs font-mono text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-md border border-emerald-500/20">
+                    2025 – 2029
+                  </span>
+                </div>
+
+                <div class="text-xs sm:text-sm text-slate-400 font-medium mb-4 flex items-center gap-2">
+                  <span class="text-slate-200">Institute of Business Management (IoBM)</span>
+                  <span aria-hidden="true">·</span>
+                  <span>Karachi, Pakistan</span>
+                </div>
+
+                <div class="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-xs sm:text-sm mb-3 flex items-center gap-2.5">
+                  <svg class="w-5 h-5 shrink-0 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+                  </svg>
+                  <span><strong>Academic Honors:</strong> Awarded Merit Scholarship for outstanding academic performance in Year 1 (<strong>3.6 Cumulative GPA</strong>).</span>
+                </div>
+
+                <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                  Focusing on business analytics, performance marketing, consumer behavior, strategic management, and financial modeling.
+                </p>
+
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Key Projects Section with 3D Tilt Cards -->
+      <section id="projects" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+          <div>
+            <span class="text-xs font-mono uppercase tracking-wider text-indigo-400 font-semibold">Featured Work</span>
+            <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-white mt-2">
+              Highlighted Projects &amp; Initiatives
+            </h2>
+            <p class="text-slate-400 text-sm mt-2 max-w-xl">
+              Concrete initiatives spanning direct-to-consumer e-commerce, enterprise retail operations, and digital acquisition campaigns.
+            </p>
+          </div>
+          <div class="text-xs font-mono text-slate-500">
+            Hover cards for interactive 3D perspective tilt
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+          <!-- Project 1: GamesBond E-Commerce -->
+          <div class="tilt-card rounded-2xl bg-slate-900/70 border border-slate-800 hover:border-indigo-500/50 p-6 flex flex-col justify-between group transition-all">
+            <div class="tilt-card-glare"></div>
+
+            <div>
+              <!-- Visual Mock Header -->
+              <div class="h-44 rounded-xl bg-gradient-to-br from-indigo-950 via-slate-900 to-slate-950 border border-slate-800 flex flex-col justify-between p-4 mb-6 relative overflow-hidden group-hover:border-indigo-500/30 transition-colors">
+                <div class="flex items-center justify-between text-xs font-mono text-slate-400">
+                  <span class="text-indigo-400 font-medium">LIVE PLATFORM</span>
+                  <span class="text-emerald-400">● 2025</span>
+                </div>
+                
+                <div class="text-center py-2">
+                  <div class="text-2xl font-black tracking-wider text-white">GAMESBOND</div>
+                  <div class="text-[11px] text-cyan-300 font-mono tracking-widest uppercase">E-Commerce Gear Hub</div>
+                </div>
+
+                <div class="flex items-center justify-between text-[11px] font-mono text-slate-400">
+                  <span>Vercel Hosted</span>
+                  <span>Pakistan Market</span>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between gap-2 mb-2">
+                <h3 class="text-lg font-bold text-white group-hover:text-indigo-400 transition-colors">
+                  GamesBond Platform
+                </h3>
+                <span class="text-xs font-mono text-cyan-400">D2C Retail</span>
+              </div>
+
+              <p class="text-xs sm:text-sm text-slate-400 leading-relaxed mb-4">
+                End-to-end e-commerce venture delivering specialized gaming peripherals in Pakistan. Led product sourcing, competitor price benchmarking, digital marketing funnels, and checkout UX.
+              </p>
+
+              <div class="flex flex-wrap gap-1.5 mb-6 text-[11px] font-mono text-slate-400">
+                <span class="bg-slate-800/80 px-2 py-0.5 rounded">E-Commerce</span>
+                <span class="bg-slate-800/80 px-2 py-0.5 rounded">Meta Ads</span>
+                <span class="bg-slate-800/80 px-2 py-0.5 rounded">Market Analysis</span>
+                <span class="bg-slate-800/80 px-2 py-0.5 rounded">D2C Strategy</span>
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
+              <a href="https://games-bond.vercel.app/" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-indigo-400 hover:text-indigo-300 flex items-center gap-1.5">
+                <span>Visit Live Platform</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                </svg>
+              </a>
+              <button onclick="openProjectModal('gamesbond')" class="text-xs text-slate-400 hover:text-white">
+                Deep Dive →
+              </button>
+            </div>
+
+          </div>
+
+          <!-- Project 2: Walmart U.S. Client Operations & CRM Case Study -->
+          <div class="tilt-card rounded-2xl bg-slate-900/70 border border-slate-800 hover:border-cyan-500/50 p-6 flex flex-col justify-between group transition-all">
+            <div class="tilt-card-glare"></div>
+
+            <div>
+              <div class="h-44 rounded-xl bg-gradient-to-br from-cyan-950 via-slate-900 to-slate-950 border border-slate-800 flex flex-col justify-between p-4 mb-6 relative overflow-hidden group-hover:border-cyan-500/30 transition-colors">
+                <div class="flex items-center justify-between text-xs font-mono text-slate-400">
+                  <span class="text-cyan-400 font-medium">ENTERPRISE SCALE</span>
+                  <span class="text-indigo-400">IBEX GLOBAL</span>
+                </div>
+                
+                <div class="text-center py-2">
+                  <div class="text-3xl font-black tracking-tight text-white font-mono tabular-nums">87%+ CSAT</div>
+                  <div class="text-[11px] text-slate-300 font-mono tracking-wider uppercase">Walmart U.S. Client Desk</div>
+                </div>
+
+                <div class="flex items-center justify-between text-[11px] font-mono text-slate-400">
+                  <span>40–50 Daily Cases</span>
+                  <span>Zero Data Breach</span>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between gap-2 mb-2">
+                <h3 class="text-lg font-bold text-white group-hover:text-cyan-400 transition-colors">
+                  Walmart U.S. Case Resolution
+                </h3>
+                <span class="text-xs font-mono text-indigo-400">Operations</span>
+              </div>
+
+              <p class="text-xs sm:text-sm text-slate-400 leading-relaxed mb-4">
+                Operational framework for managing complex order fulfillment errors, logistics delays, and financial payment escalations for Walmart U.S. with strict SLA compliance.
+              </p>
+
+              <div class="flex flex-wrap gap-1.5 mb-6 text-[11px] font-mono text-slate-400">
+                <span class="bg-slate-800/80 px-2 py-0.5 rounded">Enterprise CRM</span>
+                <span class="bg-slate-800/80 px-2 py-0.5 rounded">CSAT Retention</span>
+                <span class="bg-slate-800/80 px-2 py-0.5 rounded">De-escalation</span>
+                <span class="bg-slate-800/80 px-2 py-0.5 rounded">FCR Benchmark</span>
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
+              <span class="text-xs font-mono text-slate-500">Live Case Record</span>
+              <button onclick="openProjectModal('walmart')" class="text-xs text-slate-400 hover:text-white">
+                Inspect Framework →
+              </button>
+            </div>
+
+          </div>
+
+          <!-- Project 3: Performance Marketing & Meta Ads Growth Engine -->
+          <div class="tilt-card rounded-2xl bg-slate-900/70 border border-slate-800 hover:border-purple-500/50 p-6 flex flex-col justify-between group transition-all">
+            <div class="tilt-card-glare"></div>
+
+            <div>
+              <div class="h-44 rounded-xl bg-gradient-to-br from-purple-950 via-slate-900 to-slate-950 border border-slate-800 flex flex-col justify-between p-4 mb-6 relative overflow-hidden group-hover:border-purple-500/30 transition-colors">
+                <div class="flex items-center justify-between text-xs font-mono text-slate-400">
+                  <span class="text-purple-400 font-medium">GROWTH MARKETING</span>
+                  <span class="text-slate-300">META ADS</span>
+                </div>
+                
+                <div class="text-center py-2">
+                  <div class="text-2xl font-bold tracking-tight text-white">Conversion Funnel</div>
+                  <div class="text-[11px] text-purple-300 font-mono tracking-wider uppercase">Acquisition &amp; Retention</div>
+                </div>
+
+                <div class="flex items-center justify-between text-[11px] font-mono text-slate-400">
+                  <span>Custom Audiences</span>
+                  <span>Retargeting</span>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between gap-2 mb-2">
+                <h3 class="text-lg font-bold text-white group-hover:text-purple-400 transition-colors">
+                  Meta Ads Growth Engine
+                </h3>
+                <span class="text-xs font-mono text-purple-400">Marketing</span>
+              </div>
+
+              <p class="text-xs sm:text-sm text-slate-400 leading-relaxed mb-4">
+                Structured paid acquisition strategy using Meta Ads Manager. Designed targeted demographic lookalike audiences, tested ad creatives, and optimized landing page conversion flows.
+              </p>
+
+              <div class="flex flex-wrap gap-1.5 mb-6 text-[11px] font-mono text-slate-400">
+                <span class="bg-slate-800/80 px-2 py-0.5 rounded">Meta Ads Manager</span>
+                <span class="bg-slate-800/80 px-2 py-0.5 rounded">Audience Testing</span>
+                <span class="bg-slate-800/80 px-2 py-0.5 rounded">GoHighLevel</span>
+                <span class="bg-slate-800/80 px-2 py-0.5 rounded">Upselling</span>
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
+              <span class="text-xs font-mono text-slate-500">Paid Strategy</span>
+              <button onclick="openProjectModal('meta')" class="text-xs text-slate-400 hover:text-white">
+                View Funnel →
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- Skills & Tech Stack Grid -->
+      <section id="skills" class="py-24 bg-[#090d18] border-t border-slate-800/80 relative z-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div class="text-center max-w-2xl mx-auto mb-12">
+            <span class="text-xs font-mono uppercase tracking-wider text-indigo-400 font-semibold">Technical &amp; Operational Toolkit</span>
+            <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-white mt-2">
+              Core Competencies &amp; Tools
+            </h2>
+            <p class="text-slate-400 text-sm mt-3">
+              Synthesized from direct commercial applications, enterprise client systems, and academic training.
+            </p>
+
+            <!-- Interactive Skill Category Filter Buttons -->
+            <div class="flex flex-wrap items-center justify-center gap-2 mt-8">
+              <button onclick="filterSkills('all')" class="skill-filter-btn active px-3.5 py-1.5 text-xs font-medium rounded-lg transition-all bg-indigo-600 text-white shadow-sm" data-category="all">
+                All Capabilities
+              </button>
+              <button onclick="filterSkills('marketing')" class="skill-filter-btn px-3.5 py-1.5 text-xs font-medium rounded-lg transition-all bg-slate-800 text-slate-300 hover:text-white" data-category="marketing">
+                Growth &amp; Marketing
+              </button>
+              <button onclick="filterSkills('operations')" class="skill-filter-btn px-3.5 py-1.5 text-xs font-medium rounded-lg transition-all bg-slate-800 text-slate-300 hover:text-white" data-category="operations">
+                Operations &amp; CRM
+              </button>
+              <button onclick="filterSkills('analytics')" class="skill-filter-btn px-3.5 py-1.5 text-xs font-medium rounded-lg transition-all bg-slate-800 text-slate-300 hover:text-white" data-category="analytics">
+                Analytics &amp; Strategy
+              </button>
+              <button onclick="filterSkills('ai')" class="skill-filter-btn px-3.5 py-1.5 text-xs font-medium rounded-lg transition-all bg-slate-800 text-slate-300 hover:text-white" data-category="ai">
+                AI &amp; Tech Workflow
+              </button>
+            </div>
+          </div>
+
+          <!-- Categorized Skill Cards with 3D Tilt -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="skills-grid">
+            
+            <!-- Category 1: Growth & Performance Marketing -->
+            <div class="skill-card tilt-card p-6 rounded-2xl bg-slate-900/70 border border-slate-800 hover:border-slate-700 transition-all" data-category="marketing">
+              <div class="tilt-card-glare"></div>
+              
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-9 h-9 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-base font-bold text-white">Growth &amp; Performance Marketing</h3>
+                  <span class="text-xs text-slate-400">Acquisition, Retargeting &amp; Scaling</span>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                <div class="p-3 rounded-xl bg-slate-800/60 border border-slate-700/60">
+                  <div class="text-xs font-semibold text-slate-200">Meta Ads Manager</div>
+                  <div class="text-[11px] text-slate-400 mt-0.5">Campaign scaling, CBO, Lookalike audiences</div>
+                </div>
+                <div class="p-3 rounded-xl bg-slate-800/60 border border-slate-700/60">
+                  <div class="text-xs font-semibold text-slate-200">Customer Acquisition</div>
+                  <div class="text-[11px] text-slate-400 mt-0.5">CAC optimization &amp; conversion funnels</div>
+                </div>
+                <div class="p-3 rounded-xl bg-slate-800/60 border border-slate-700/60">
+                  <div class="text-xs font-semibold text-slate-200">Lead Engagement &amp; Nurturing</div>
+                  <div class="text-[11px] text-slate-400 mt-0.5">Automated follow-ups &amp; drip sequences</div>
+                </div>
+                <div class="p-3 rounded-xl bg-slate-800/60 border border-slate-700/60">
+                  <div class="text-xs font-semibold text-slate-200">Revenue Retention &amp; Upselling</div>
+                  <div class="text-[11px] text-slate-400 mt-0.5">Maximizing LTV and repeat order velocity</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Category 2: Client Operations & CRM Systems -->
+            <div class="skill-card tilt-card p-6 rounded-2xl bg-slate-900/70 border border-slate-800 hover:border-slate-700 transition-all" data-category="operations">
+              <div class="tilt-card-glare"></div>
+
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-9 h-9 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-base font-bold text-white">Client Operations &amp; CRM Systems</h3>
+                  <span class="text-xs text-slate-400">Enterprise Service &amp; Pipeline Control</span>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                <div class="p-3 rounded-xl bg-slate-800/60 border border-slate-700/60">
+                  <div class="text-xs font-semibold text-slate-200">GoHighLevel (GHL)</div>
+                  <div class="text-[11px] text-slate-400 mt-0.5">Automations, pipeline workflows, forms</div>
+                </div>
+                <div class="p-3 rounded-xl bg-slate-800/60 border border-slate-700/60">
+                  <div class="text-xs font-semibold text-slate-200">Enterprise &amp; Custom CRMs</div>
+                  <div class="text-[11px] text-slate-400 mt-0.5">End-to-end case logging &amp; tracking</div>
+                </div>
+                <div class="p-3 rounded-xl bg-slate-800/60 border border-slate-700/60">
+                  <div class="text-xs font-semibold text-slate-200">De-escalation &amp; Retention</div>
+                  <div class="text-[11px] text-slate-400 mt-0.5">High-friction objection handling</div>
+                </div>
+                <div class="p-3 rounded-xl bg-slate-800/60 border border-slate-700/60">
+                  <div class="text-xs font-semibold text-slate-200">Omnichannel Chat &amp; Support</div>
+                  <div class="text-[11px] text-slate-400 mt-0.5">Live live-chat, ticket routing, FCR focus</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Category 3: Business Analytics & Strategic Tools -->
+            <div class="skill-card tilt-card p-6 rounded-2xl bg-slate-900/70 border border-slate-800 hover:border-slate-700 transition-all" data-category="analytics">
+              <div class="tilt-card-glare"></div>
+
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-9 h-9 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-base font-bold text-white">Business Analytics &amp; Tools</h3>
+                  <span class="text-xs text-slate-400">Quantitative Modeling &amp; Research</span>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                <div class="p-3 rounded-xl bg-slate-800/60 border border-slate-700/60">
+                  <div class="text-xs font-semibold text-slate-200">Microsoft Excel</div>
+                  <div class="text-[11px] text-slate-400 mt-0.5">VLOOKUP, Pivot Tables, conditional logic</div>
+                </div>
+                <div class="p-3 rounded-xl bg-slate-800/60 border border-slate-700/60">
+                  <div class="text-xs font-semibold text-slate-200">Google Workspace &amp; MS Suite</div>
+                  <div class="text-[11px] text-slate-400 mt-0.5">Sheets, Docs, Slides, PowerPoint reporting</div>
+                </div>
+                <div class="p-3 rounded-xl bg-slate-800/60 border border-slate-700/60">
+                  <div class="text-xs font-semibold text-slate-200">Market &amp; Competitor Intelligence</div>
+                  <div class="text-[11px] text-slate-400 mt-0.5">Price elasticity &amp; consumer purchase triggers</div>
+                </div>
+                <div class="p-3 rounded-xl bg-slate-800/60 border border-slate-700/60">
+                  <div class="text-xs font-semibold text-slate-200">Visual Assets &amp; Collateral (Canva)</div>
+                  <div class="text-[11px] text-slate-400 mt-0.5">Ad creatives, pitch decks &amp; branded graphics</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Category 4: AI & Tech Workflow -->
+            <div class="skill-card tilt-card p-6 rounded-2xl bg-slate-900/70 border border-slate-800 hover:border-slate-700 transition-all" data-category="ai">
+              <div class="tilt-card-glare"></div>
+
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-9 h-9 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-base font-bold text-white">AI &amp; Tech Workflow</h3>
+                  <span class="text-xs text-slate-400">Automation, AI Research &amp; Prototyping</span>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                <div class="p-3 rounded-xl bg-slate-800/60 border border-slate-700/60">
+                  <div class="text-xs font-semibold text-slate-200">Generative AI for Research</div>
+                  <div class="text-[11px] text-slate-400 mt-0.5">Market synthesis &amp; unstructured data extraction</div>
+                </div>
+                <div class="p-3 rounded-xl bg-slate-800/60 border border-slate-700/60">
+                  <div class="text-xs font-semibold text-slate-200">Prompt Engineering</div>
+                  <div class="text-[11px] text-slate-400 mt-0.5">Custom LLM instructions for operations &amp; copy</div>
+                </div>
+                <div class="p-3 rounded-xl bg-slate-800/60 border border-slate-700/60">
+                  <div class="text-xs font-semibold text-slate-200">AI-Assisted Development</div>
+                  <div class="text-[11px] text-slate-400 mt-0.5">Rapid code scaffolding &amp; landing page builds</div>
+                </div>
+                <div class="p-3 rounded-xl bg-slate-800/60 border border-slate-700/60">
+                  <div class="text-xs font-semibold text-slate-200">Rapid Tool &amp; SaaS Adoption</div>
+                  <div class="text-[11px] text-slate-400 mt-0.5">Instant onboarding to modern enterprise software</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+          
+          <!-- Left Column: Contact Information & Direct Channels -->
+          <div class="lg:col-span-5 space-y-6">
+            <span class="text-xs font-mono uppercase tracking-wider text-indigo-400 font-semibold">Initiate Dialogue</span>
+            <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-white">
+              Let's Connect &amp; Collaborate
+            </h2>
+            <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+              Seeking an associate or internship role in Digital Marketing, Business Operations, or Client Success. Available for immediate interview scheduling and project discussions.
+            </p>
+
+            <div class="space-y-4 pt-4">
+              
+              <!-- Email Card -->
+              <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between group hover:border-slate-700 transition-all">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-lg bg-indigo-500/10 flex items-center justify-center text-indigo-400">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="text-xs text-slate-400">Primary Email</div>
+                    <a href="mailto:jazibjawed25@gmail.com" class="text-sm font-semibold text-white hover:text-indigo-400 transition-colors">
+                      jazibjawed25@gmail.com
+                    </a>
+                  </div>
+                </div>
+                <button onclick="copyToClipboard('jazibjawed25@gmail.com', 'Email copied to clipboard!')" class="text-xs text-slate-400 hover:text-white p-2 rounded-lg hover:bg-slate-800 transition-colors" title="Copy Email">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                  </svg>
+                </button>
+              </div>
+
+              <!-- Phone Card -->
+              <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between group hover:border-slate-700 transition-all">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-lg bg-cyan-500/10 flex items-center justify-center text-cyan-400">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="text-xs text-slate-400">Phone / WhatsApp</div>
+                    <a href="tel:+923112416409" class="text-sm font-semibold text-white hover:text-cyan-400 transition-colors">
+                      +92 311 2416409
+                    </a>
+                  </div>
+                </div>
+                <button onclick="copyToClipboard('+923112416409', 'Phone number copied to clipboard!')" class="text-xs text-slate-400 hover:text-white p-2 rounded-lg hover:bg-slate-800 transition-colors" title="Copy Phone">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                  </svg>
+                </button>
+              </div>
+
+              <!-- LinkedIn Card -->
+              <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between group hover:border-slate-700 transition-all">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-lg bg-indigo-600/10 flex items-center justify-center text-indigo-400">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="text-xs text-slate-400">Professional Profile</div>
+                    <a href="https://linkedin.com/in/jazibjawed" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold text-white hover:text-indigo-400 transition-colors">
+                      linkedin.com/in/jazibjawed
+                    </a>
+                  </div>
+                </div>
+                <a href="https://linkedin.com/in/jazibjawed" target="_blank" rel="noopener noreferrer" class="text-xs text-slate-400 hover:text-white p-2 rounded-lg hover:bg-slate-800 transition-colors">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                  </svg>
+                </a>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- Right Column: Interactive Contact Form -->
+          <div class="lg:col-span-7">
+            <div class="tilt-card p-6 sm:p-8 rounded-2xl bg-slate-900/70 border border-slate-800">
+              <div class="tilt-card-glare"></div>
+
+              <h3 class="text-xl font-bold text-white mb-2">Send Direct Message</h3>
+              <p class="text-xs sm:text-sm text-slate-400 mb-6">
+                Fill out this quick form and I will respond within 24 hours.
+              </p>
+
+              <form id="contact-form" onsubmit="handleContactSubmit(event)" class="space-y-4">
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label for="name" class="block text-xs font-medium text-slate-300 mb-1.5">Your Name *</label>
+                    <input type="text" id="name" required placeholder="Alex Mercer" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700/80 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-indigo-500 transition-colors" />
+                  </div>
+                  <div>
+                    <label for="email" class="block text-xs font-medium text-slate-300 mb-1.5">Your Email *</label>
+                    <input type="email" id="email" required placeholder="alex@company.com" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700/80 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-indigo-500 transition-colors" />
+                  </div>
+                </div>
+
+                <div>
+                  <label for="subject" class="block text-xs font-medium text-slate-300 mb-1.5">Subject / Opportunity Type *</label>
+                  <select id="subject" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700/80 text-white text-sm focus:outline-none focus:border-indigo-500 transition-colors">
+                    <option value="Internship / Full-time Opportunity">Associate / Internship Opportunity</option>
+                    <option value="Client Operations Inquiry">Client Operations / CRM Consultation</option>
+                    <option value="Digital Marketing Project">Digital Marketing / Meta Ads Collaboration</option>
+                    <option value="General Networking">General Inquiries &amp; Networking</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label for="message" class="block text-xs font-medium text-slate-300 mb-1.5">Message *</label>
+                  <textarea id="message" rows="4" required placeholder="Hi Jazib, I saw your portfolio and would like to discuss an opportunity..." class="w-full px-3.5 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700/80 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-indigo-500 transition-colors"></textarea>
+                </div>
+
+                <div class="pt-2 flex items-center justify-between">
+                  <div class="text-xs text-slate-500 font-mono">
+                    * Response guaranteed within 24h
+                  </div>
+                  <button type="submit" id="submit-btn" class="px-6 py-2.5 text-xs font-semibold text-white bg-indigo-600 hover:bg-indigo-500 rounded-xl transition-all shadow-md shadow-indigo-600/20 flex items-center gap-2">
+                    <span id="btn-text">Send Message</span>
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                    </svg>
+                  </button>
+                </div>
+
+              </form>
+
+              <!-- Success Alert (Hidden by default) -->
+              <div id="form-success" class="hidden mt-4 p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-xs sm:text-sm">
+                <div class="flex items-center gap-2 font-semibold text-white mb-1">
+                  <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  Message Prepared Successfully!
+                </div>
+                <div>Your email client was opened to dispatch directly to <span class="font-mono text-emerald-200">jazibjawed25@gmail.com</span>. Thank you for reaching out!</div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800/80 bg-[#060910] py-12 relative z-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+        
+        <div class="flex items-center gap-3">
+          <span class="w-7 h-7 rounded-lg bg-indigo-600 flex items-center justify-center text-white font-mono text-xs font-bold">
+            JJ
+          </span>
+          <span class="text-xs text-slate-400">
+            © 2026 Jazib Jawed · Merit Scholar &amp; Client Operations Strategist
+          </span>
+        </div>
+
+        <div class="flex items-center gap-6 text-xs text-slate-400">
+          <a href="#about" class="hover:text-white transition-colors">About</a>
+          <a href="#projects" class="hover:text-white transition-colors">Projects</a>
+          <a href="#skills" class="hover:text-white transition-colors">Skills</a>
+          <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+          <a href="/public/assets/aistudio/Jazib_Merit_Scholar_2026_2e4d1c13.pdf" target="_blank" class="text-indigo-400 hover:text-indigo-300 transition-colors">Resume PDF</a>
+        </div>
+
+        <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="px-3 py-1.5 text-xs text-slate-400 hover:text-white bg-slate-900 border border-slate-800 rounded-lg flex items-center gap-1.5 transition-colors">
+          <span>Back to Top</span>
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+          </svg>
+        </button>
+
+      </div>
+    </footer>
+
+    <!-- Resume Modal -->
+    <div id="resume-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6" onclick="if(event.target === this) closeModal('resume-modal')">
+      <div class="bg-slate-900 border border-slate-700 rounded-2xl w-full max-w-4xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden">
+        
+        <div class="px-6 py-4 border-b border-slate-800 flex items-center justify-between bg-slate-950">
+          <div class="flex items-center gap-2">
+            <span class="text-xs font-mono text-indigo-400">OFFICIAL RESUME ATTACHMENT</span>
+            <span class="text-slate-600">·</span>
+            <span class="text-sm font-semibold text-white">Jazib_Merit_Scholar_2026.pdf</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <a href="/public/assets/aistudio/Jazib_Merit_Scholar_2026_2e4d1c13.pdf" target="_blank" download="Jazib_Jawed_Resume.pdf" class="px-3 py-1 text-xs font-medium text-white bg-indigo-600 hover:bg-indigo-500 rounded-lg transition-colors flex items-center gap-1.5">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+              </svg>
+              Direct Download
+            </a>
+            <button onclick="closeModal('resume-modal')" class="text-slate-400 hover:text-white p-1 rounded-lg">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="p-6 overflow-y-auto space-y-6 text-sm text-slate-300">
+          
+          <div class="border-b border-slate-800 pb-4">
+            <h2 class="text-2xl font-bold text-white tracking-tight">JAZIB JAWED</h2>
+            <div class="text-xs font-mono text-indigo-400 mt-1">
+              BBA STUDENT @ IOBM (MERIT SCHOLAR) | EX-IBEX (WALMART U.S.) | CLIENT OPERATIONS, SALES &amp; PERFORMANCE MARKETING
+            </div>
+            <div class="text-xs text-slate-400 mt-1 flex flex-wrap gap-x-4">
+              <span>Karachi, Pakistan</span>
+              <span>+92 311 2416409</span>
+              <span>jazibjawed25@gmail.com</span>
+              <span>linkedin.com/in/jazibjawed</span>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="text-xs font-mono uppercase tracking-wider text-slate-400 font-semibold mb-2">Executive Summary</h4>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed bg-slate-800/40 p-4 rounded-xl border border-slate-800">
+              Merit-scholar BBA candidate at IoBM (3.6 Year-1 GPA), combining frontline U.S. client operations experience with commercial strategy. Proven record in high-volume customer resolution (87%+ CSAT), CRM management, and direct-to-consumer e-commerce growth. Seeking an associate or internship role in Digital Marketing, Business Operations, or Client Success.
+            </p>
+          </div>
+
+          <div>
+            <h4 class="text-xs font-mono uppercase tracking-wider text-slate-400 font-semibold mb-2">Professional Experience</h4>
+            <div class="bg-slate-800/40 p-4 rounded-xl border border-slate-800 space-y-2">
+              <div class="flex justify-between items-baseline">
+                <strong class="text-white">Customer Service Specialist – Walmart (U.S. Campaign)</strong>
+                <span class="text-xs font-mono text-indigo-400">Jan 2025 – Jan 2026 (1 year)</span>
+              </div>
+              <div class="text-xs text-slate-400">IBEX Global | Karachi, Pakistan</div>
+              <ul class="list-disc list-inside text-xs space-y-1 text-slate-300 pt-2">
+                <li>High-Volume Operations: Executed 40–50 live daily touchpoints for Walmart U.S., maintaining an 87%+ CSAT while exceeding productivity benchmarks.</li>
+                <li>De-escalation &amp; Retention: Resolved complex payment, fulfillment, and account disputes using structured objection handling to minimize customer churn.</li>
+                <li>CRM &amp; Data Accuracy: Logged end-to-end case histories across enterprise CRM platforms with zero compromise on data integrity.</li>
+                <li>Performance Metrics: Consistently met strict operational KPIs including AHT, CSAT, and First Contact Resolution (FCR).</li>
+              </ul>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="text-xs font-mono uppercase tracking-wider text-slate-400 font-semibold mb-2">Personal Project</h4>
+            <div class="bg-slate-800/40 p-4 rounded-xl border border-slate-800 space-y-2">
+              <div class="flex justify-between items-baseline">
+                <strong class="text-white">GamesBond | Founder &amp; Digital Growth Lead (E-Commerce Project)</strong>
+                <span class="text-xs font-mono text-cyan-400">2025</span>
+              </div>
+              <div class="text-xs text-indigo-400">games-bond.vercel.app</div>
+              <ul class="list-disc list-inside text-xs space-y-1 text-slate-300 pt-1">
+                <li>Designed, built, and launched an end-to-end e-commerce platform targeting the gaming gear niche in Pakistan.</li>
+                <li>Conducted market research on competitor pricing, consumer purchase behavior, and digital retail positioning.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="text-xs font-mono uppercase tracking-wider text-slate-400 font-semibold mb-2">Education</h4>
+            <div class="bg-slate-800/40 p-4 rounded-xl border border-slate-800">
+              <div class="flex justify-between items-baseline">
+                <strong class="text-white">Institute of Business Management (IoBM)</strong>
+                <span class="text-xs font-mono text-emerald-400">2025 – 2029</span>
+              </div>
+              <div class="text-xs text-slate-400 mb-2">Bachelor of Business Administration (BBA) | Karachi, Pakistan</div>
+              <div class="text-xs text-emerald-300 font-medium">Academic Honors: Awarded Merit Scholarship for outstanding academic performance in Year 1 (3.6 Cumulative GPA).</div>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="text-xs font-mono uppercase tracking-wider text-slate-400 font-semibold mb-2">Core Competencies &amp; Tools</h4>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+              <div class="p-3 bg-slate-800/40 rounded-lg border border-slate-800">
+                <span class="text-indigo-300 font-semibold block mb-1">Growth &amp; Performance Marketing</span>
+                Meta Ads Manager, Digital Campaigns, Customer Acquisition, Lead Engagement, Revenue Retention &amp; Upselling
+              </div>
+              <div class="p-3 bg-slate-800/40 rounded-lg border border-slate-800">
+                <span class="text-cyan-300 font-semibold block mb-1">Client Operations &amp; CRM Systems</span>
+                GoHighLevel, Enterprise &amp; Custom CRMs, Omnichannel Chat Support, De-escalation, Account Tracking
+              </div>
+              <div class="p-3 bg-slate-800/40 rounded-lg border border-slate-800">
+                <span class="text-emerald-300 font-semibold block mb-1">Business Analytics &amp; Tools</span>
+                MS Office (Excel, Word, PowerPoint), Google Workspace, Market Research, Financial &amp; Business Analytics, Canva
+              </div>
+              <div class="p-3 bg-slate-800/40 rounded-lg border border-slate-800">
+                <span class="text-purple-300 font-semibold block mb-1">AI &amp; Tech Workflow</span>
+                Generative AI for Market Research &amp; Data Extraction, AI-Assisted Development &amp; Workflows, Prompt Engineering, Rapid Tool Adoption
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Project Deep-Dive Modal -->
+    <div id="project-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6" onclick="if(event.target === this) closeModal('project-modal')">
+      <div class="bg-slate-900 border border-slate-700 rounded-2xl w-full max-w-2xl max-h-[85vh] flex flex-col shadow-2xl overflow-hidden">
+        <div class="px-6 py-4 border-b border-slate-800 flex items-center justify-between bg-slate-950">
+          <div id="project-modal-title" class="font-bold text-white text-base">Project Overview</div>
+          <button onclick="closeModal('project-modal')" class="text-slate-400 hover:text-white p-1 rounded-lg">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+        <div id="project-modal-body" class="p-6 overflow-y-auto text-sm text-slate-300 space-y-4">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Source Code Modal (To easily copy complete single-file code) -->
+    <div id="source-modal" class="fixed inset-0 z-50 hidden bg-black/85 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6" onclick="if(event.target === this) closeModal('source-modal')">
+      <div class="bg-slate-900 border border-slate-700 rounded-2xl w-full max-w-4xl max-h-[85vh] flex flex-col shadow-2xl overflow-hidden">
+        <div class="px-6 py-4 border-b border-slate-800 flex items-center justify-between bg-slate-950">
+          <div class="flex items-center gap-2">
+            <span class="text-xs font-mono text-cyan-400">PORTABLE SINGLE-FILE PACKAGE</span>
+            <span class="text-slate-600">·</span>
+            <span class="text-sm font-semibold text-white">index.html (HTML + Tailwind CDN + Three.js)</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <button onclick="copySourceCode()" class="px-3 py-1.5 text-xs font-semibold text-white bg-indigo-600 hover:bg-indigo-500 rounded-lg transition-colors flex items-center gap-1.5">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+              </svg>
+              Copy Entire Code
+            </button>
+            <button onclick="closeModal('source-modal')" class="text-slate-400 hover:text-white p-1 rounded-lg">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="p-6 overflow-y-auto">
+          <p class="text-xs text-slate-400 mb-3">
+            This entire portfolio is engineered to run as a single file. You can copy the raw code below or save it as <code class="text-indigo-300">index.html</code> and double-click to run in any browser with zero installations.
+          </p>
+          <pre class="bg-black/80 p-4 rounded-xl text-xs font-mono text-slate-300 overflow-x-auto border border-slate-800/80 max-h-96 selection:bg-indigo-500/30"><code id="raw-source-display">&lt;!doctype html&gt;... (loading full source)</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- Interactive JavaScript Engine -->
+    <script>
+      /* ============================================================
+         1. THREE.JS 3D INTERACTIVE HERO BACKGROUND
+         ============================================================ */
+      (function initThreeHero() {
+        const container = document.getElementById('three-hero-container');
+        if (!container || typeof THREE === 'undefined') return;
+
+        const scene = new THREE.Scene();
+
+        const camera = new THREE.PerspectiveCamera(
+          60,
+          container.clientWidth / container.clientHeight,
+          0.1,
+          1000
+        );
+        camera.position.z = 45;
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setSize(container.clientWidth, container.clientHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        container.appendChild(renderer.domElement);
+
+        // Group to hold all 3D geometric entities
+        const worldGroup = new THREE.Group();
+        scene.add(worldGroup);
+
+        // 1. Central Hero Wireframe Polyhedron (Icosahedron)
+        const polyGeo = new THREE.IcosahedronGeometry(14, 1);
+        const polyMat = new THREE.MeshBasicMaterial({
+          color: 0x6366f1,
+          wireframe: true,
+          transparent: true,
+          opacity: 0.28,
+        });
+        const polyhedron = new THREE.Mesh(polyGeo, polyMat);
+        worldGroup.add(polyhedron);
+
+        // Inner glowing translucent core
+        const coreGeo = new THREE.IcosahedronGeometry(7, 0);
+        const coreMat = new THREE.MeshBasicMaterial({
+          color: 0x06b6d4,
+          wireframe: true,
+          transparent: true,
+          opacity: 0.45,
+        });
+        const core = new THREE.Mesh(coreGeo, coreMat);
+        worldGroup.add(core);
+
+        // 2. Orbital Torus Ring
+        const ringGeo = new THREE.TorusGeometry(20, 0.15, 16, 100);
+        const ringMat = new THREE.MeshBasicMaterial({
+          color: 0x818cf8,
+          transparent: true,
+          opacity: 0.35,
+        });
+        const ring = new THREE.Mesh(ringGeo, ringMat);
+        ring.rotation.x = Math.PI / 3;
+        worldGroup.add(ring);
+
+        // Secondary counter-tilted ring
+        const ring2Geo = new THREE.TorusGeometry(24, 0.12, 16, 100);
+        const ring2Mat = new THREE.MeshBasicMaterial({
+          color: 0x06b6d4,
+          transparent: true,
+          opacity: 0.22,
+        });
+        const ring2 = new THREE.Mesh(ring2Geo, ring2Mat);
+        ring2.rotation.x = -Math.PI / 4;
+        ring2.rotation.y = Math.PI / 6;
+        worldGroup.add(ring2);
+
+        // 3. Floating Interactive Particle Starfield
+        const particleCount = 450;
+        const positions = new Float32Array(particleCount * 3);
+        const colors = new Float32Array(particleCount * 3);
+
+        const colorIndigo = new THREE.Color(0x6366f1);
+        const colorCyan = new THREE.Color(0x38bdf8);
+        const colorViolet = new THREE.Color(0xa855f7);
+
+        for (let i = 0; i < particleCount; i++) {
+          const i3 = i * 3;
+          positions[i3] = (Math.random() - 0.5) * 140;
+          positions[i3 + 1] = (Math.random() - 0.5) * 120;
+          positions[i3 + 2] = (Math.random() - 0.5) * 80;
+
+          // Subtle multi-tonal neon palette
+          const choice = Math.random();
+          const pColor = choice < 0.45 ? colorIndigo : choice < 0.8 ? colorCyan : colorViolet;
+          colors[i3] = pColor.r;
+          colors[i3 + 1] = pColor.g;
+          colors[i3 + 2] = pColor.b;
+        }
+
+        const particleGeo = new THREE.BufferGeometry();
+        particleGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        particleGeo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+        const particleMat = new THREE.PointsMaterial({
+          size: 1.2,
+          vertexColors: true,
+          transparent: true,
+          opacity: 0.65,
+        });
+
+        const particleSystem = new THREE.Points(particleGeo, particleMat);
+        scene.add(particleSystem);
+
+        // Mouse Parallax & Interaction State
+        let mouseX = 0;
+        let mouseY = 0;
+        let targetX = 0;
+        let targetY = 0;
+        const windowHalfX = window.innerWidth / 2;
+        const windowHalfY = window.innerHeight / 2;
+
+        window.addEventListener('mousemove', (e) => {
+          mouseX = (e.clientX - windowHalfX) * 0.04;
+          mouseY = (e.clientY - windowHalfY) * 0.04;
+        });
+
+        // Click ripple impulse on 3D field
+        window.addEventListener('click', () => {
+          core.scale.set(1.3, 1.3, 1.3);
+          polyhedron.scale.set(1.08, 1.08, 1.08);
+          setTimeout(() => {
+            core.scale.set(1, 1, 1);
+            polyhedron.scale.set(1, 1, 1);
+          }, 300);
+        });
+
+        // Resize handler
+        window.addEventListener('resize', () => {
+          const width = container.clientWidth;
+          const height = container.clientHeight;
+          camera.aspect = width / height;
+          camera.updateProjectionMatrix();
+          renderer.setSize(width, height);
+        });
+
+        // Animation Loop
+        const clock = new THREE.Clock();
+        function animate() {
+          requestAnimationFrame(animate);
+          const delta = clock.getDelta();
+
+          // Damped mouse movement (exponential lerp)
+          targetX += (mouseX - targetX) * 0.05;
+          targetY += (mouseY - targetY) * 0.05;
+
+          // Rotate geometries
+          polyhedron.rotation.x += 0.003;
+          polyhedron.rotation.y += 0.005;
+
+          core.rotation.x -= 0.004;
+          core.rotation.y -= 0.006;
+
+          ring.rotation.z += 0.002;
+          ring2.rotation.z -= 0.0025;
+
+          particleSystem.rotation.y += 0.0006;
+
+          // Apply gentle camera / group tilt based on mouse position
+          worldGroup.rotation.y = targetX * 0.015;
+          worldGroup.rotation.x = targetY * 0.015;
+
+          renderer.render(scene, camera);
+        }
+        animate();
+      })();
+
+
+      /* ============================================================
+         2. SMOOTH 3D TILT EFFECT ON CARDS (Zero-dependency vanilla)
+         ============================================================ */
+      (function initTiltCards() {
+        const cards = document.querySelectorAll('.tilt-card');
+        const maxRotation = 10; // degrees
+
+        cards.forEach((card) => {
+          const glare = card.querySelector('.tilt-card-glare');
+
+          card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+
+            const rotateX = ((y - centerY) / centerY) * -maxRotation;
+            const rotateY = ((x - centerX) / centerX) * maxRotation;
+
+            card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.02, 1.02, 1.02)`;
+
+            if (glare) {
+              const glareX = (x / rect.width) * 100;
+              const glareY = (y / rect.height) * 100;
+              glare.style.background = `radial-gradient(circle at ${glareX}% ${glareY}%, rgba(255, 255, 255, 0.12), transparent 60%)`;
+              glare.style.opacity = '1';
+            }
+          });
+
+          card.addEventListener('mouseleave', () => {
+            card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+            if (glare) {
+              glare.style.opacity = '0';
+            }
+          });
+        });
+      })();
+
+
+      /* ============================================================
+         3. MOBILE NAVIGATION DRAWER TOGGLE
+         ============================================================ */
+      const mobileBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const iconOpen = document.getElementById('menu-icon-open');
+      const iconClose = document.getElementById('menu-icon-close');
+
+      if (mobileBtn && mobileMenu) {
+        mobileBtn.addEventListener('click', () => {
+          const isExpanded = !mobileMenu.classList.contains('hidden');
+          if (isExpanded) {
+            mobileMenu.classList.add('hidden');
+            iconOpen.classList.remove('hidden');
+            iconClose.classList.add('hidden');
+          } else {
+            mobileMenu.classList.remove('hidden');
+            iconOpen.classList.add('hidden');
+            iconClose.classList.remove('hidden');
+          }
+        });
+
+        // Close on nav link click
+        document.querySelectorAll('.mobile-link').forEach((link) => {
+          link.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            iconOpen.classList.remove('hidden');
+            iconClose.classList.add('hidden');
+          });
+        });
+      }
+
+
+      /* ============================================================
+         4. SKILL CATEGORY FILTER SYSTEM
+         ============================================================ */
+      function filterSkills(category) {
+        const buttons = document.querySelectorAll('.skill-filter-btn');
+        buttons.forEach((btn) => {
+          if (btn.getAttribute('data-category') === category) {
+            btn.classList.add('bg-indigo-600', 'text-white');
+            btn.classList.remove('bg-slate-800', 'text-slate-300');
+          } else {
+            btn.classList.remove('bg-indigo-600', 'text-white');
+            btn.classList.add('bg-slate-800', 'text-slate-300');
+          }
+        });
+
+        const cards = document.querySelectorAll('.skill-card');
+        cards.forEach((card) => {
+          const cardCat = card.getAttribute('data-category');
+          if (category === 'all' || cardCat === category) {
+            card.style.display = 'block';
+            card.style.opacity = '1';
+          } else {
+            card.style.display = 'none';
+            card.style.opacity = '0';
+          }
+        });
+      }
+
+
+      /* ============================================================
+         5. MODAL SYSTEM & PROJECT DEEP DIVES
+         ============================================================ */
+      const projectDetails = {
+        gamesbond: {
+          title: "GamesBond E-Commerce Platform — Architecture & Strategy",
+          html: `
+            <div class="space-y-4">
+              <div class="p-3 bg-indigo-500/10 border border-indigo-500/20 rounded-xl text-xs text-indigo-300">
+                Live URL: <a href="https://games-bond.vercel.app/" target="_blank" class="underline font-mono">https://games-bond.vercel.app/</a>
+              </div>
+              <h4 class="font-bold text-white text-sm">Background &amp; Opportunity</h4>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Recognizing fragmented supply chains and steep markups on gaming gear in Pakistan, GamesBond was designed as a direct-to-consumer digital storefront engineered to make high-performance peripherals accessible.
+              </p>
+              <h4 class="font-bold text-white text-sm">Market Research &amp; Retail Positioning</h4>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Conducted price elasticity benchmarking across competitor retail outlets and international import options. Positioned product bundles to target key gaming demographic segments with clear warranty protections.
+              </p>
+              <h4 class="font-bold text-white text-sm">Growth &amp; Acquisition Strategy</h4>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Leveraged Meta Ads Manager with interest-targeted campaigns (esports enthusiasts, PC builders), paired with low-friction mobile checkout to maximize visitor-to-lead conversion.
+              </p>
+            </div>
+          `
+        },
+        walmart: {
+          title: "Walmart U.S. Client Operations & De-escalation Framework",
+          html: `
+            <div class="space-y-4">
+              <div class="p-3 bg-cyan-500/10 border border-cyan-500/20 rounded-xl text-xs text-cyan-300">
+                Campaign: Walmart U.S. at IBEX Global · Duration: Jan 2025 – Jan 2026
+              </div>
+              <h4 class="font-bold text-white text-sm">Operational Scale &amp; Performance KPIs</h4>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Managed 40–50 live omnichannel interactions each shift across multiple concurrent CRM interfaces. Sustained an 87%+ Customer Satisfaction (CSAT) rating while strictly beating Average Handling Time (AHT) and First Contact Resolution (FCR) targets.
+              </p>
+              <h4 class="font-bold text-white text-sm">Structured De-escalation &amp; Retention</h4>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Resolved critical customer friction points including misrouted freight deliveries, complex payment ledger disputes, and inventory stockouts using structured empathy, decisive compensation logic, and objection reframing.
+              </p>
+              <h4 class="font-bold text-white text-sm">CRM Data Integrity</h4>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Categorized root-cause metadata for fulfillment exceptions, providing the product and logistics teams with actionable frontline intelligence to avoid systemic repeat tickets.
+              </p>
+            </div>
+          `
+        },
+        meta: {
+          title: "Meta Ads Paid Acquisition & Conversion Blueprint",
+          html: `
+            <div class="space-y-4">
+              <div class="p-3 bg-purple-500/10 border border-purple-500/20 rounded-xl text-xs text-purple-300">
+                Core Stack: Meta Ads Manager · GoHighLevel CRM · Landing Page Funnel
+              </div>
+              <h4 class="font-bold text-white text-sm">Audience Targeting &amp; Testing Methodology</h4>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Developed tiered testing pipelines dividing cold prospecting (broad interest + Lookalikes) from warm retargeting (cart abandoners, video viewers, and engagement custom audiences).
+              </p>
+              <h4 class="font-bold text-white text-sm">Creative &amp; Copy Architecture</h4>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Crafted high-CTR hook-story-offer video and carousel assets in Canva, testing distinct value propositions to identify winning cost-per-acquisition (CPA) angles.
+              </p>
+              <h4 class="font-bold text-white text-sm">Lifecycle Engagement via CRM</h4>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Integrated lead capture with GoHighLevel to automate instant SMS/email confirmation, post-purchase follow-ups, and upselling cadences.
+              </p>
+            </div>
+          `
+        }
+      };
+
+      function openProjectModal(key) {
+        const item = projectDetails[key];
+        if (!item) return;
+        document.getElementById('project-modal-title').innerText = item.title;
+        document.getElementById('project-modal-body').innerHTML = item.html;
+        openModal('project-modal');
+      }
+
+      function openModal(modalId) {
+        const modal = document.getElementById(modalId);
+        if (modal) {
+          modal.classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+        }
+      }
+
+      function closeModal(modalId) {
+        const modal = document.getElementById(modalId);
+        if (modal) {
+          modal.classList.add('hidden');
+          document.body.style.overflow = 'auto';
+        }
+      }
+
+      // Close modal on ESC key
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeModal('resume-modal');
+          closeModal('project-modal');
+          closeModal('source-modal');
+        }
+      });
+
+
+      /* ============================================================
+         6. CLIPBOARD & TOAST NOTIFICATION UTILITIES
+         ============================================================ */
+      function copyToClipboard(text, message) {
+        navigator.clipboard.writeText(text).then(() => {
+          showToast(message || 'Copied to clipboard!');
+        }).catch(() => {
+          showToast('Failed to copy to clipboard');
+        });
+      }
+
+      function showToast(message) {
+        const toast = document.getElementById('toast');
+        const msgEl = document.getElementById('toast-message');
+        if (!toast || !msgEl) return;
+
+        msgEl.innerText = message;
+        toast.classList.remove('translate-y-16', 'opacity-0');
+        toast.classList.add('translate-y-0', 'opacity-100');
+
+        setTimeout(() => {
+          toast.classList.remove('translate-y-0', 'opacity-100');
+          toast.classList.add('translate-y-16', 'opacity-0');
+        }, 2800);
+      }
+
+
+      /* ============================================================
+         7. CONTACT FORM SUBMISSION HANDLER
+         ============================================================ */
+      function handleContactSubmit(e) {
+        e.preventDefault();
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const subject = document.getElementById('subject').value;
+        const message = document.getElementById('message').value.trim();
+
+        const btn = document.getElementById('submit-btn');
+        const btnText = document.getElementById('btn-text');
+        btnText.innerText = 'Preparing Message...';
+        btn.disabled = true;
+
+        setTimeout(() => {
+          btnText.innerText = 'Send Message';
+          btn.disabled = false;
+          document.getElementById('form-success').classList.remove('hidden');
+
+          // Construct mailto URL to launch default mail client with pre-filled content
+          const mailtoUrl = `mailto:jazibjawed25@gmail.com?subject=${encodeURIComponent(subject + ' - From ' + name)}&body=${encodeURIComponent('Sender: ' + name + ' (' + email + ')\n\n' + message)}`;
+          window.location.href = mailtoUrl;
+
+          showToast('Direct email client opened!');
+        }, 600);
+      }
+
+
+      /* ============================================================
+         8. SOURCE CODE EXPORT / COPY HELPER
+         ============================================================ */
+      function copySourceCode() {
+        const fullSource = document.documentElement.outerHTML;
+        navigator.clipboard.writeText(fullSource).then(() => {
+          showToast('Complete single-file code copied to clipboard!');
+        });
+      }
+
+      // Populate source modal preview when opened
+      document.addEventListener('DOMContentLoaded', () => {
+        const rawEl = document.getElementById('raw-source-display');
+        if (rawEl) {
+          rawEl.textContent = '<!doctype html>\n' + document.documentElement.outerHTML.slice(0, 5000) + '\n\n... [Click "Copy Entire Code" above to copy the complete un-truncated file]';
+        }
+      });
+    </script>
+
+  </body>
+</html>
